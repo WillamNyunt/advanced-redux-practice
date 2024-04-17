@@ -1,16 +1,23 @@
 import ProductItem from './ProductItem';
 import classes from './Products.module.css';
+import DUMMY_PRODUCTS from '../../Data/dummyproducts';
 
 const Products = (props) => {
+  const products = DUMMY_PRODUCTS
+
   return (
     <section className={classes.products}>
       <h2>Buy your favorite products</h2>
       <ul>
-        <ProductItem
-          title='Test'
-          price={6}
-          description='This is a first product - amazing!'
-        />
+        {products.map((product) => (
+          <ProductItem
+            key={product.id}
+            id={product.id}
+            title={product.title}
+            price={product.price}
+            description={product.description}
+          />
+        ))}
       </ul>
     </section>
   );
